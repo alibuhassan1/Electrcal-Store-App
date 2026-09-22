@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0b1f33" />
+<title>Electrical Store & Asset Tracker</title>
+<style>:root{--bg:#f3f6f9;--card:#fff;--ink:#12202e;--muted:#6d7b88;--line:#dfe6ec;--navy:#0b1f33;--blue:#0e67c7;--orange:#f59e0b;--green:#14804a;--red:#c23b36;--cyan:#0b87a1;--shadow:0 8px 24px rgba(11,31,51,.08)}*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}body{padding-bottom:calc(24px + env(safe-area-inset-bottom))}.topbar{background:linear-gradient(135deg,#081727,#123a5c);color:#fff;padding:calc(18px + env(safe-area-inset-top)) 18px 18px;display:flex;justify-content:space-between;align-items:flex-start}.topbar h1{font-size:22px;margin:2px 0 3px}.eyebrow{font-size:10px;letter-spacing:2px;opacity:.7}.sub{font-size:13px;opacity:.8}.iconbtn{display:none;background:transparent;border:0;color:white;font-size:26px}.tabs{display:flex;gap:6px;padding:10px 12px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;overflow:auto}.tabs button{border:0;background:transparent;padding:10px 13px;border-radius:10px;font-weight:700;color:#536271;white-space:nowrap}.tabs button.active{background:#eaf3ff;color:var(--blue)}main{max-width:1150px;margin:0 auto;padding:16px}.view{display:none}.view.active{display:block}.hero-card{background:linear-gradient(135deg,#0b1f33,#17496f);color:white;border-radius:18px;padding:22px;display:flex;align-items:center;justify-content:space-between;box-shadow:var(--shadow)}.hero-number{font-size:42px;font-weight:800;margin:2px 0}.muted{color:var(--muted);font-size:13px}.hero-card .muted{color:#b7c7d7}.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0}.kpi{background:var(--card);border-radius:15px;padding:16px;border-left:5px solid #999;box-shadow:var(--shadow);cursor:pointer;transition:.15s;position:relative}.kpi:active{transform:scale(.985)}.kpi span{display:block;color:var(--muted);font-size:13px}.kpi strong{font-size:28px}.kpi small{display:block;margin-top:7px;color:var(--blue);font-weight:800;font-size:11px}.kpi:focus{outline:3px solid rgba(14,103,199,.18);outline-offset:2px}.kpi.ok{border-color:var(--green)}.kpi.warn{border-color:var(--orange)}.kpi.danger{border-color:var(--red)}.kpi.info{border-color:var(--cyan)}.panel{background:var(--card);border-radius:16px;padding:16px;margin-top:14px;box-shadow:var(--shadow)}.panel-title{font-weight:800;font-size:17px}.panel-head,.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}.dept-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}.dept-card{background:#f8fafc;border:1px solid var(--line);border-radius:15px;padding:16px;text-align:left;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;font-weight:800;color:var(--ink)}.dept-icon{font-size:26px}.dept-card strong{font-size:22px;color:var(--blue)}button{cursor:pointer}.primary,.secondary,.danger-btn,.linkbtn,.filelabel{border:0;border-radius:11px;padding:11px 14px;font-weight:800;font-size:14px}.primary{background:var(--blue);color:#fff}.secondary,.filelabel{background:#edf2f6;color:var(--ink);border:1px solid var(--line)}.danger-btn{background:#feeceb;color:var(--red)}.linkbtn{background:transparent;color:var(--blue);padding:6px}.toolbar{margin-bottom:10px}.search{flex:1;min-width:0;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:15px}.filters{display:flex;gap:8px;margin-bottom:12px;overflow:auto}.filters select{padding:10px 12px;border:1px solid var(--line);background:#fff;border-radius:10px}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.item-card,.repair-card{background:#fff;border-radius:16px;box-shadow:var(--shadow);overflow:hidden;border:1px solid #eef2f5}.item-photo{height:150px;background:#edf2f6;display:flex;align-items:center;justify-content:center;color:#8a98a5;font-size:38px;overflow:hidden}.item-photo img{width:100%;height:100%;object-fit:cover}.card-body{padding:14px}.row-between{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.material{font-size:12px;color:var(--blue);font-weight:800}.item-name{font-size:18px;font-weight:800;margin:3px 0 7px}.meta{display:flex;flex-wrap:wrap;gap:6px 10px;color:var(--muted);font-size:12px}.badge{display:inline-flex;align-items:center;border-radius:999px;padding:5px 8px;font-size:11px;font-weight:800}.badge.ok{background:#e7f6ee;color:var(--green)}.badge.warn{background:#fff4db;color:#a35e00}.badge.danger{background:#fdeceb;color:var(--red)}.badge.info{background:#e5f5f8;color:var(--cyan)}.qtyline{margin:12px 0 8px;display:flex;align-items:baseline;justify-content:space-between}.qty{font-size:28px;font-weight:900}.card-actions{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}.card-actions button{border:1px solid var(--line);background:#f8fafc;border-radius:9px;padding:8px 6px;font-weight:700;font-size:12px}.empty{padding:28px;text-align:center;color:var(--muted);background:#fff;border:1px dashed #ccd6df;border-radius:14px}.attention-list{display:grid;gap:8px;margin-top:10px}.attention-item{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:10px 12px;background:#f8fafc;border-radius:11px}.timeline{display:grid;gap:10px}.timeline-item{background:#fff;border-radius:14px;padding:14px;box-shadow:var(--shadow);display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:start}.timeline-icon{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#edf4fb}.timeline-title{font-weight:800}.timeline-time{color:var(--muted);font-size:11px;white-space:nowrap}.stack{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.steps{line-height:1.7;padding-left:22px}.danger-zone{border:1px solid #ffd8d5}.modal{display:none;position:fixed;inset:0;background:rgba(2,12,23,.58);z-index:100;padding:16px;align-items:center;justify-content:center}.modal.show{display:flex}.modal-card{background:#fff;border-radius:18px;width:min(560px,100%);max-height:92vh;overflow:auto;padding:18px}.modal-card.large{width:min(820px,100%)}.modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.modal-head h2{margin:0}.close{border:0;background:#eef2f5;width:36px;height:36px;border-radius:50%;font-size:18px}.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.form-grid.one{grid-template-columns:1fr}.form-grid label{font-size:12px;font-weight:800;color:#526170}.form-grid input,.form-grid select,.form-grid textarea{width:100%;margin-top:5px;border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit;color:var(--ink);background:#fff}.wide{grid-column:1/-1}.form-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:4px}.photo-preview{max-width:220px;max-height:180px;border-radius:12px;border:1px solid var(--line)}.hidden{display:none}.item-summary{background:#f4f7fa;border-radius:12px;padding:12px}.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:#071625;color:#fff;padding:11px 15px;border-radius:999px;opacity:0;pointer-events:none;transition:.25s;z-index:200;font-weight:700;font-size:13px}.toast.show{opacity:1;transform:translate(-50%,0)}.repair-card .card-body{display:grid;gap:8px}.repair-title{font-weight:900;font-size:17px}.repair-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;font-size:12px}.repair-grid div{background:#f7f9fb;padding:8px;border-radius:9px}.filelabel{display:inline-flex;align-items:center;justify-content:center;cursor:pointer}.photo-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:5px}.photo-action{display:flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line);border-radius:11px;padding:12px;font-weight:800;background:#f8fafc;color:var(--ink);cursor:pointer}.photo-action.camera{background:#eaf3ff;color:var(--blue)}.photo-action.gallery{background:#eef8f3;color:var(--green)}.photo-action input{display:none}.manage-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.manage-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}.manage-card h3{margin:0 0 6px}.manage-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.mini-danger{border:1px solid #ffd8d5;background:#fff5f4;color:var(--red);border-radius:9px;padding:7px 10px;font-size:12px;font-weight:800}.txn-delete{border:1px solid #ffd8d5;background:#fff5f4;color:var(--red);border-radius:9px;padding:7px 10px;font-size:12px;font-weight:800}
+
+.folder-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}.folder-title-wrap{display:flex;align-items:center;gap:10px}.backbtn{border:0;background:#edf2f6;color:var(--ink);border-radius:10px;padding:9px 11px;font-weight:800}.folder-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.folder-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow);text-align:left;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;color:var(--ink)}.folder-icon{font-size:30px}.folder-name{font-size:17px;font-weight:900}.folder-sub{font-size:12px;color:var(--muted);margin-top:4px}.folder-count{font-size:22px;font-weight:900;color:var(--blue)}.folder-actions{display:flex;gap:6px;margin-top:8px}.folder-actions button{border:1px solid var(--line);background:#f8fafc;border-radius:9px;padding:7px 9px;font-size:12px;font-weight:700}.crumb{font-size:12px;color:var(--muted);margin-bottom:8px}.folder-empty{grid-column:1/-1}.folder-badge{display:inline-flex;gap:6px;align-items:center;margin-top:5px;font-size:11px;color:var(--muted)}.folder-top-actions{display:flex;gap:8px;flex-wrap:wrap}.breadcrumb{font-size:13px;color:var(--muted);margin:8px 0 12px}.breadcrumb b{color:var(--ink)}
+@media(max-width:760px){.manage-grid{grid-template-columns:1fr}.folder-grid{grid-template-columns:1fr}.topbar h1{font-size:19px}.kpi-grid{grid-template-columns:repeat(2,1fr)}.dept-grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.toolbar{align-items:stretch;flex-direction:column}.toolbar .primary{width:100%}.form-grid{grid-template-columns:1fr}.wide{grid-column:auto}.card-actions{grid-template-columns:repeat(2,1fr)}.tabs{scrollbar-width:none}.repair-grid{grid-template-columns:1fr}.timeline-item{grid-template-columns:auto 1fr}.timeline-time{grid-column:2}.hero-card{align-items:flex-end}.hero-card .primary{padding:10px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <div class="eyebrow">ELECTRICAL MAINTENANCE</div>
+    <h1>Electrical Store & Asset Tracker</h1>
+    <div class="sub">Marine • Calciner • Desalination</div>
+  </div>
+  <button class="iconbtn" id="menuBtn" aria-label="Menu">☰</button>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button data-view="dashboard" class="active">Dashboard</button>
+  <button data-view="inventory">Inventory</button>
+  <button data-view="transactions">Movements</button>
+  <button data-view="repairs">Repairs</button>
+  <button data-view="manage">Manage</button>
+  <button data-view="backup">Backup</button>
+</nav>
+
+<main>
+<section id="dashboard" class="view active">
+  <div class="hero-card">
+    <div>
+      <div class="muted">Store status</div>
+      <div class="hero-number" id="totalItems">0</div>
+      <div>Total registered items</div>
+    </div>
+    <button class="primary" id="quickAdd">＋ Add Item</button>
+  </div>
+  <div class="kpi-grid">
+    <div class="kpi ok" data-kpi-status="available" role="button" tabindex="0" aria-label="View available materials"><span>Available</span><strong id="kpiAvailable">0</strong><small>View materials →</small></div>
+    <div class="kpi warn" data-kpi-status="low" role="button" tabindex="0" aria-label="View low stock materials"><span>Low Stock</span><strong id="kpiLow">0</strong><small>View materials →</small></div>
+    <div class="kpi danger" data-kpi-status="out" role="button" tabindex="0" aria-label="View out of stock materials"><span>Out of Stock</span><strong id="kpiOut">0</strong><small>View materials →</small></div>
+    <div class="kpi info" data-kpi-status="repair" role="button" tabindex="0" aria-label="View materials under repair"><span>Under Repair</span><strong id="kpiRepair">0</strong><small>View materials →</small></div>
+  </div>
+  <div class="panel">
+    <div class="panel-title">Departments</div>
+    <div class="dept-grid">
+      <button class="dept-card" data-dept="Marine"><span class="dept-icon">⚓</span><span>Marine</span><strong id="deptMarine">0</strong></button>
+      <button class="dept-card" data-dept="Calciner"><span class="dept-icon">♨</span><span>Calciner</span><strong id="deptCalciner">0</strong></button>
+      <button class="dept-card" data-dept="Desalination"><span class="dept-icon">💧</span><span>Desalination</span><strong id="deptDesalination">0</strong></button>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-head"><div class="panel-title">Attention Needed</div><button class="linkbtn" data-go="inventory">View Inventory</button></div>
+    <div id="attentionList" class="attention-list"><div class="empty">No low-stock or out-of-stock items.</div></div>
+  </div>
+</section>
+
+<section id="folders" class="view">
+  <div class="folder-head">
+    <div class="folder-title-wrap"><button class="backbtn" id="foldersBack">← Back</button><div><div class="muted">Department / Folder</div><div class="panel-title" id="foldersDeptTitle">Marine</div></div></div>
+    <div class="folder-top-actions"><button class="secondary" id="viewFolderItemsBtn">View Items</button><button class="secondary" id="addItemHereBtn">＋ Add Item Here</button><button class="primary" id="addFolderBtn">＋ Add Subfolder</button></div>
+  </div>
+  <div class="breadcrumb" id="folderBreadcrumb"><b>Marine</b></div>
+  <div class="panel">
+    <div class="panel-head"><div><div class="panel-title">Folders & Subfolders</div><div class="muted">Create as many levels as you need, then open a folder to go deeper.</div></div></div>
+    <div id="folderList" class="folder-grid"></div>
+  </div>
+</section>
+
+<section id="inventory" class="view">
+  <div class="toolbar">
+    <input id="searchInput" class="search" placeholder="Search material no., item, tag, part no..." />
+    <button class="primary" id="addItemBtn">＋ Add Item</button>
+  </div>
+  <div class="filters">
+    <select id="deptFilter"><option value="">All Departments</option><option>Marine</option><option>Calciner</option><option>Desalination</option></select>
+    <select id="areaFilter"><option value="">All Folders</option></select>
+    <select id="statusFilter"><option value="">All Stock Status</option><option value="available">Available</option><option value="low">Low Stock</option><option value="out">Out of Stock</option><option value="repair">Under Repair</option></select>
+    <select id="categoryFilter"><option value="">All Categories</option></select>
+  </div>
+  <div id="inventoryList" class="cards"><div class="empty">No items yet. Add your first item.</div></div>
+</section>
+
+<section id="transactions" class="view">
+  <div class="panel-head"><div><div class="panel-title">Material Movements</div><div class="muted">Issue, receive, return and consume history</div></div></div>
+  <div id="transactionList" class="timeline"><div class="empty">No movements recorded yet.</div></div>
+</section>
+
+<section id="repairs" class="view">
+  <div class="toolbar">
+    <div><div class="panel-title">Repair Tracking</div><div class="muted">Motors and repairable electrical assets</div></div>
+    <button class="primary" id="addRepairBtn">＋ New Repair</button>
+  </div>
+  <div id="repairList" class="cards"><div class="empty">No repair records yet.</div></div>
+</section>
+
+
+<section id="manage" class="view">
+  <div class="panel-head"><div><div class="panel-title">Owner Controls</div><div class="muted">Full control from inside the app — add, edit and delete records.</div></div></div>
+  <div class="manage-grid">
+    <div class="manage-card"><h3>📁 Folders & Subfolders</h3><div class="muted">Create, rename or delete any folder under Marine, Calciner or Desalination.</div><div class="manage-actions"><button class="secondary manage-dept" data-dept="Marine">Marine</button><button class="secondary manage-dept" data-dept="Calciner">Calciner</button><button class="secondary manage-dept" data-dept="Desalination">Desalination</button></div></div>
+    <div class="manage-card"><h3>⚙️ Inventory Items</h3><div class="muted">Add new items and edit or delete existing items at any time.</div><div class="manage-actions"><button class="primary" id="manageAddItem">＋ Add Item</button><button class="secondary" id="manageInventory">Open Inventory</button></div></div>
+    <div class="manage-card"><h3>🔧 Repair Records</h3><div class="muted">Create, update, mark returned or delete repair records.</div><div class="manage-actions"><button class="primary" id="manageAddRepair">＋ New Repair</button><button class="secondary" id="manageRepairs">Open Repairs</button></div></div>
+    <div class="manage-card"><h3>↔️ Material Movements</h3><div class="muted">Every issue, receive, return, consume or adjustment can be deleted if entered by mistake.</div><div class="manage-actions"><button class="secondary" id="manageMovements">Open Movements</button></div></div>
+  </div>
+  <div class="panel danger-zone"><div class="panel-title">Full Data Control</div><p class="muted">You remain the owner of the local data. Backup before large changes.</p><div class="stack"><button class="danger-btn" id="manageResetData">Delete All App Data</button></div></div>
+</section>
+
+<section id="backup" class="view">
+  <div class="panel">
+    <div class="panel-title">Backup & Transfer</div>
+    <p class="muted">Your data is stored on this device/browser. Export a backup regularly.</p>
+    <div class="stack">
+      <button class="primary" id="exportJson">⬇ Export Full Backup (.json)</button>
+      <button class="secondary" id="exportCsv">⬇ Export Inventory (.csv)</button>
+      <label class="secondary filelabel">⬆ Import Backup (.json)<input type="file" id="importJson" accept="application/json" hidden /></label>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-title">iPhone Installation</div>
+    <ol class="steps"><li>Host these files on any free HTTPS service (for example GitHub Pages).</li><li>Open the app link in Safari.</li><li>Tap Share → <b>Add to Home Screen</b>.</li><li>The app will then open like a normal iPhone app and work offline after the first load.</li></ol>
+  </div>
+  <div class="panel danger-zone">
+    <div class="panel-title">Danger Zone</div>
+    <button class="danger-btn" id="resetData">Reset All Local Data</button>
+  </div>
+</section>
+</main>
+
+<div class="modal" id="itemModal" aria-hidden="true">
+ <div class="modal-card large">
+  <div class="modal-head"><h2 id="itemModalTitle">Add Item</h2><button class="close" data-close="itemModal">✕</button></div>
+  <form id="itemForm" class="form-grid">
+    <input type="hidden" id="itemId" />
+    <label>Material Number<input id="materialNo" required /></label>
+    <label>Item Name<input id="itemName" required /></label>
+    <label>Department<select id="department" required><option>Marine</option><option>Calciner</option><option>Desalination</option></select></label>
+    <label>Equipment Folder<select id="area"><option value="">Unassigned</option></select></label>
+    <label>Category<input id="category" placeholder="Motor, Bearing, Contactor..." /></label>
+    <label>Equipment Tag<input id="equipmentTag" placeholder="e.g. BC-11" /></label>
+    <label>Manufacturer<input id="manufacturer" /></label>
+    <label>Model<input id="model" /></label>
+    <label>Part Number<input id="partNo" /></label>
+    <label>Serial Number<input id="serialNo" /></label>
+    <label>Quantity Available<input id="qty" type="number" min="0" step="1" value="0" required /></label>
+    <label>Minimum Stock<input id="minStock" type="number" min="0" step="1" value="0" /></label>
+    <label>Unit<select id="unit"><option>pcs</option><option>set</option><option>m</option><option>roll</option><option>box</option><option>litre</option><option>kg</option></select></label>
+    <label>Store Location<input id="storeLocation" placeholder="Electrical Store" /></label>
+    <label>Rack / Bin<input id="rackBin" placeholder="Rack B4 / Bin 2" /></label>
+    <label>Lifecycle Status<select id="lifeStatus"><option>Available</option><option>Reserved</option><option>Issued</option><option>Installed</option><option>Consumed</option><option>Sent for Repair</option><option>Under Repair</option><option>Returned from Repair</option><option>Scrapped</option></select></label>
+    <label class="wide">Description<textarea id="description" rows="3"></textarea></label>
+    <div class="wide">
+      <label>Photo</label>
+      <div class="photo-actions">
+        <label class="photo-action camera">📷 Take Photo<input id="photoCamera" type="file" accept="image/*" capture="environment" /></label>
+        <label class="photo-action gallery">🖼️ Photo Library<input id="photoGallery" type="file" accept="image/*" /></label>
+      </div>
+    </div>
+    <div class="wide photo-preview-wrap"><img id="photoPreview" class="photo-preview hidden" alt="Preview"/></div>
+    <label class="wide">Notes<textarea id="notes" rows="2"></textarea></label>
+    <div class="wide form-actions"><button type="button" class="secondary" data-close="itemModal">Cancel</button><button type="submit" class="primary">Save Item</button></div>
+  </form>
+ </div>
+</div>
+
+<div class="modal" id="movementModal" aria-hidden="true">
+ <div class="modal-card">
+  <div class="modal-head"><h2 id="movementTitle">Material Movement</h2><button class="close" data-close="movementModal">✕</button></div>
+  <form id="movementForm" class="form-grid one">
+    <input type="hidden" id="moveItemId" />
+    <div class="item-summary" id="moveItemSummary"></div>
+    <label>Movement Type<select id="moveType"><option value="Issue">Issue</option><option value="Receive">Receive Stock</option><option value="Return">Return</option><option value="Consume">Consume</option><option value="Adjust">Stock Adjustment</option></select></label>
+    <label>Quantity<input id="moveQty" type="number" min="1" step="1" value="1" required /></label>
+    <label>Issued / Received By<input id="movePerson" placeholder="Name or ID" /></label>
+    <label>Equipment / Work Order<input id="moveEquipment" placeholder="Equipment tag / WO" /></label>
+    <label>Note<textarea id="moveNote" rows="3"></textarea></label>
+    <div class="form-actions"><button type="button" class="secondary" data-close="movementModal">Cancel</button><button type="submit" class="primary">Save Movement</button></div>
+  </form>
+ </div>
+</div>
+
+<div class="modal" id="repairModal" aria-hidden="true">
+ <div class="modal-card large">
+  <div class="modal-head"><h2>Repair Record</h2><button class="close" data-close="repairModal">✕</button></div>
+  <form id="repairForm" class="form-grid">
+    <input type="hidden" id="repairId" />
+    <label class="wide">Item / Motor<select id="repairItem" required></select></label>
+    <label>Repair Status<select id="repairStatus"><option>Sent for Repair</option><option>Under Repair</option><option>Waiting Spare Parts</option><option>Ready for Collection</option><option>Returned from Repair</option><option>Scrapped</option></select></label>
+    <label>Workshop / Vendor<input id="workshop" /></label>
+    <label>Sent Date<input id="sentDate" type="date" /></label>
+    <label>Return Date<input id="returnDate" type="date" /></label>
+    <label>Repair Cost<input id="repairCost" type="number" step="0.001" min="0" placeholder="0.000" /></label>
+    <label>Currency<select id="currency"><option>BHD</option><option>USD</option><option>AED</option><option>SAR</option></select></label>
+    <label class="wide">Fault Description<textarea id="fault" rows="3" required></textarea></label>
+    <label class="wide">Repair Work / Findings<textarea id="repairWork" rows="3"></textarea></label>
+    <label class="wide">Notes<textarea id="repairNotes" rows="2"></textarea></label>
+    <div class="wide form-actions"><button type="button" class="secondary" data-close="repairModal">Cancel</button><button type="submit" class="primary">Save Repair</button></div>
+  </form>
+ </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script>const DB_NAME='ElectricalStoreAssetTracker';const DB_VERSION=1;let db;let items=[];let transactions=[];let repairs=[];let currentPhoto='';let currentDept='Marine';let currentPath='';const DEFAULT_FOLDERS={Marine:['Kangaroo Crane','New VSU','Old VSU'],Calciner:[],Desalination:[]};let folders=loadFolders();
+const $=s=>document.querySelector(s);const $$=s=>Array.from(document.querySelectorAll(s));
+function uid(){return crypto.randomUUID?crypto.randomUUID():'id-'+Date.now()+'-'+Math.random().toString(16).slice(2)}
+function loadFolders(){try{const x=JSON.parse(localStorage.getItem('electricalStoreFoldersV1'));return x&&typeof x==='object'?{Marine:[...(x.Marine||[])],Calciner:[...(x.Calciner||[])],Desalination:[...(x.Desalination||[])]}:JSON.parse(JSON.stringify(DEFAULT_FOLDERS))}catch(e){return JSON.parse(JSON.stringify(DEFAULT_FOLDERS))}}
+function saveFolders(){localStorage.setItem('electricalStoreFoldersV1',JSON.stringify(folders))}
+function folderNames(dept){return [...new Set([...(folders[dept]||[]),...items.filter(i=>i.department===dept&&i.area).map(i=>i.area)])].filter(Boolean).sort((a,b)=>a.localeCompare(b))}
+function pathLabel(p){return p.split('/').map(x=>x.trim()).join(' › ')}
+function populateAreaSelect(dept,selected=''){const sel=$('#area');if(!sel)return;const names=folderNames(dept);sel.innerHTML='<option value="">Unassigned</option>'+names.map(n=>`<option value="${esc(n)}">${esc(pathLabel(n))}</option>`).join('');sel.value=names.includes(selected)?selected:''}
+function populateAreaFilter(){const dept=$('#deptFilter').value;const current=$('#areaFilter').value;let names=dept?folderNames(dept):[...new Set(Object.keys(folders).flatMap(d=>folderNames(d)))].sort((a,b)=>a.localeCompare(b));$('#areaFilter').innerHTML='<option value="">All Folders</option>'+names.map(n=>`<option value="${esc(n)}">${esc(n)}</option>`).join('');$('#areaFilter').value=names.includes(current)?current:''}
+
+function openDB(){return new Promise((res,rej)=>{const r=indexedDB.open(DB_NAME,DB_VERSION);r.onupgradeneeded=e=>{const d=e.target.result;['items','transactions','repairs'].forEach(n=>{if(!d.objectStoreNames.contains(n))d.createObjectStore(n,{keyPath:'id'})})};r.onsuccess=()=>{db=r.result;res()};r.onerror=()=>rej(r.error)})}
+function getAll(store){return new Promise((res,rej)=>{const r=db.transaction(store,'readonly').objectStore(store).getAll();r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
+function put(store,obj){return new Promise((res,rej)=>{const r=db.transaction(store,'readwrite').objectStore(store).put(obj);r.onsuccess=()=>res();r.onerror=()=>rej(r.error)})}
+function del(store,id){return new Promise((res,rej)=>{const r=db.transaction(store,'readwrite').objectStore(store).delete(id);r.onsuccess=()=>res();r.onerror=()=>rej(r.error)})}
+function clearStore(store){return new Promise((res,rej)=>{const r=db.transaction(store,'readwrite').objectStore(store).clear();r.onsuccess=()=>res();r.onerror=()=>rej(r.error)})}
+async function load(){items=await getAll('items');transactions=await getAll('transactions');repairs=await getAll('repairs');renderAll()}
+function stockState(i){if(['Sent for Repair','Under Repair'].includes(i.lifeStatus))return 'repair';if(Number(i.qty)<=0)return 'out';if(Number(i.qty)<=Number(i.minStock||0))return 'low';return 'available'}
+function badgeFor(i){let s=stockState(i);return s==='available'?'<span class="badge ok">● Available</span>':s==='low'?'<span class="badge warn">● Low Stock</span>':s==='out'?'<span class="badge danger">● Out of Stock</span>':'<span class="badge info">● Under Repair</span>'}
+function esc(v=''){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+function fmtDate(v){if(!v)return '—';try{return new Date(v).toLocaleString()}catch{return v}}
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
+function renderAll(){renderDashboard();renderFolders();renderInventory();renderTransactions();renderRepairs();populateRepairItems()}
+function renderDashboard(){
+ $('#totalItems').textContent=items.length;$('#kpiAvailable').textContent=items.filter(i=>stockState(i)==='available').length;$('#kpiLow').textContent=items.filter(i=>stockState(i)==='low').length;$('#kpiOut').textContent=items.filter(i=>stockState(i)==='out').length;$('#kpiRepair').textContent=items.filter(i=>stockState(i)==='repair').length;
+ ['Marine','Calciner','Desalination'].forEach(d=>$('#dept'+d).textContent=items.filter(i=>i.department===d).length);
+ const att=items.filter(i=>['low','out','repair'].includes(stockState(i))).slice(0,8);$('#attentionList').innerHTML=att.length?att.map(i=>`<div class="attention-item"><div><b>${esc(i.itemName)}</b><div class="muted">${esc(i.materialNo)} • ${esc(i.department)}</div></div>${badgeFor(i)}</div>`).join(''):'<div class="empty">No low-stock or out-of-stock items.</div>'
+}
+function parentPath(path){const parts=path.split('/').filter(Boolean);parts.pop();return parts.join('/')}
+function childFolders(dept,parent=''){const all=folderNames(dept);const prefix=parent?parent+'/':'';return all.filter(p=>{if(!p.startsWith(prefix))return false;const rest=p.slice(prefix.length);return rest&& !rest.includes('/')}).sort((a,b)=>a.localeCompare(b))}
+function directItemCount(dept,path){return items.filter(i=>i.department===dept&&(i.area||'')===path).length}
+function subtreeItems(dept,path){return items.filter(i=>i.department===dept&&((i.area||'')===path || (path && (i.area||'').startsWith(path+'/'))))}
+function renderFolders(){
+ $('#foldersDeptTitle').textContent=currentPath?currentPath.split('/').pop():currentDept;
+ $('#folderBreadcrumb').innerHTML='<b>'+esc(currentDept)+'</b>'+(currentPath?' &nbsp;›&nbsp; '+currentPath.split('/').map(esc).join(' &nbsp;›&nbsp; '):'');
+ $('#foldersBack').textContent=currentPath?'← Parent Folder':'← Dashboard';
+ $('#addFolderBtn').textContent=currentPath?'＋ Add Subfolder':'＋ Add Folder';
+ $('#viewFolderItemsBtn').textContent=currentPath?`View Items Here (${directItemCount(currentDept,currentPath)})`:`View Department Items (${items.filter(i=>i.department===currentDept).length})`;
+ const names=childFolders(currentDept,currentPath);
+ const cards=names.map(full=>{const label=full.split('/').pop();const direct=directItemCount(currentDept,full);const all=subtreeItems(currentDept,full);const low=all.filter(i=>stockState(i)==='low').length,out=all.filter(i=>stockState(i)==='out').length;const subs=childFolders(currentDept,full).length;return `<div class="folder-card"><div class="folder-icon">📁</div><div><div class="folder-name">${esc(label)}</div><div class="folder-sub">${direct} item${direct===1?'':'s'}${subs?` • ${subs} subfolder${subs===1?'':'s'}`:''}</div><div class="folder-badge">${low?`🟡 ${low} low stock`:''}${low&&out?' • ':''}${out?`🔴 ${out} out`:''}</div><div class="folder-actions"><button data-folder-act="open" data-name="${esc(full)}">Open</button><button data-folder-act="rename" data-name="${esc(full)}">Rename</button><button data-folder-act="delete" data-name="${esc(full)}">Delete</button></div></div><div class="folder-count">${all.length}</div></div>`}).join('');
+ $('#folderList').innerHTML=cards||'<div class="empty folder-empty">No subfolders here yet. Tap “Add Folder” to create one, or “Add Item Here”.</div>';
+}
+function openDepartment(dept){currentDept=dept;currentPath='';renderFolders();switchView('folders')}
+function openFolder(path){currentPath=path;renderFolders();switchView('folders')}
+function viewCurrentFolderItems(){
+ $('#deptFilter').value=currentDept;populateAreaFilter();
+ if(currentPath){$('#areaFilter').value=currentPath}else{$('#areaFilter').value=''}
+ switchView('inventory');renderInventory();
+}
+async function renameFolder(oldPath){
+ const oldLabel=oldPath.split('/').pop();const newLabel=(prompt('New folder name:',oldLabel)||'').trim().replaceAll('/','-');if(!newLabel||newLabel===oldLabel)return;
+ const parent=parentPath(oldPath),newPath=parent?parent+'/'+newLabel:newLabel;
+ if(folderNames(currentDept).some(n=>n.toLowerCase()===newPath.toLowerCase())){alert('A folder with this name already exists here.');return}
+ folders[currentDept]=(folders[currentDept]||[]).map(p=>p===oldPath?newPath:(p.startsWith(oldPath+'/')?newPath+p.slice(oldPath.length):p));saveFolders();
+ for(const i of items.filter(x=>x.department===currentDept&&((x.area||'')===oldPath||(x.area||'').startsWith(oldPath+'/')))){i.area=newPath+(i.area||'').slice(oldPath.length);await put('items',i)}
+ if(currentPath===oldPath||currentPath.startsWith(oldPath+'/'))currentPath=newPath+currentPath.slice(oldPath.length);
+ await load();renderFolders();toast('Folder renamed')
+}
+async function deleteFolder(path){
+ const affected=items.filter(i=>i.department===currentDept&&((i.area||'')===path||(i.area||'').startsWith(path+'/')));const subs=folderNames(currentDept).filter(p=>p===path||p.startsWith(path+'/')).length-1;
+ const dest=parentPath(path);const msg=`Delete “${path.split('/').pop()}”${subs>0?` and ${subs} subfolder(s)`:''}? ${affected.length?`${affected.length} item(s) will be moved to ${dest||'Unassigned'}.`:''}`;if(!confirm(msg))return;
+ folders[currentDept]=(folders[currentDept]||[]).filter(p=>!(p===path||p.startsWith(path+'/')));saveFolders();
+ for(const i of affected){i.area=dest;await put('items',i)}
+ if(currentPath===path||currentPath.startsWith(path+'/'))currentPath=dest;
+ await load();renderFolders();toast('Folder deleted')
+}
+
+function renderInventory(){
+ const q=$('#searchInput').value.trim().toLowerCase(),dept=$('#deptFilter').value,area=$('#areaFilter').value,status=$('#statusFilter').value,cat=$('#categoryFilter').value;populateAreaFilter();let cats=[...new Set(items.map(i=>i.category).filter(Boolean))].sort();const old=cat;$('#categoryFilter').innerHTML='<option value="">All Categories</option>'+cats.map(c=>`<option>${esc(c)}</option>`).join('');$('#categoryFilter').value=cats.includes(old)?old:'';
+ let arr=items.filter(i=>{const hay=[i.materialNo,i.itemName,i.department,i.area,i.category,i.equipmentTag,i.manufacturer,i.model,i.partNo,i.serialNo,i.description].join(' ').toLowerCase();return(!q||hay.includes(q))&&(!dept||i.department===dept)&&(!area||i.area===area)&&(!status||stockState(i)===status)&&(!cat||i.category===cat)}).sort((a,b)=>a.itemName.localeCompare(b.itemName));
+ $('#inventoryList').innerHTML=arr.length?arr.map(i=>`<article class="item-card"><div class="item-photo">${i.photo?`<img src="${i.photo}" alt="${esc(i.itemName)}">`:'⚙️'}</div><div class="card-body"><div class="row-between"><div><div class="material">${esc(i.materialNo)}</div><div class="item-name">${esc(i.itemName)}</div></div>${badgeFor(i)}</div><div class="meta"><span>📍 ${esc(i.department)}</span>${i.area?`<span>📁 ${esc(i.area)}</span>`:''}${i.category?`<span>• ${esc(i.category)}</span>`:''}${i.equipmentTag?`<span>🏷 ${esc(i.equipmentTag)}</span>`:''}${i.rackBin?`<span>🗄 ${esc(i.rackBin)}</span>`:''}</div><div class="qtyline"><div><span class="qty">${Number(i.qty)||0}</span> ${esc(i.unit||'pcs')}</div><div class="muted">Min: ${Number(i.minStock)||0}</div></div><div class="card-actions"><button data-act="move" data-id="${i.id}">Issue / Receive</button><button data-act="repair" data-id="${i.id}">Repair</button><button data-act="edit" data-id="${i.id}">Edit</button><button data-act="delete" data-id="${i.id}">Delete</button></div></div></article>`).join(''):'<div class="empty">No matching items.</div>'
+}
+function renderTransactions(){let arr=[...transactions].sort((a,b)=>new Date(b.date)-new Date(a.date));$('#transactionList').innerHTML=arr.length?arr.map(t=>{const i=items.find(x=>x.id===t.itemId)||{};let icon=t.type==='Receive'||t.type==='Return'?'↙':t.type==='Adjust'?'±':'↗';return `<div class="timeline-item"><div class="timeline-icon">${icon}</div><div><div class="timeline-title">${esc(t.type)} — ${esc(i.itemName||t.itemName||'Item')}</div><div class="muted">${esc(t.qty)} ${esc(i.unit||'pcs')} • ${esc(t.person||'No person')} ${t.equipment?'• '+esc(t.equipment):''}</div>${t.note?`<div class="muted">${esc(t.note)}</div>`:''}<div style="margin-top:8px"><button class="txn-delete" data-tact="delete" data-id="${t.id}">Delete Movement</button></div></div><div class="timeline-time">${fmtDate(t.date)}</div></div>`}).join(''):'<div class="empty">No movements recorded yet.</div>'}
+function renderRepairs(){let arr=[...repairs].sort((a,b)=>new Date(b.created)-new Date(a.created));$('#repairList').innerHTML=arr.length?arr.map(r=>{const i=items.find(x=>x.id===r.itemId)||{};return `<article class="repair-card"><div class="card-body"><div class="row-between"><div><div class="material">${esc(i.materialNo||'')}</div><div class="repair-title">${esc(i.itemName||'Unknown Item')}</div></div><span class="badge ${r.status.includes('Returned')?'ok':r.status==='Scrapped'?'danger':'info'}">${esc(r.status)}</span></div><div class="repair-grid"><div><b>Fault</b><br>${esc(r.fault)}</div><div><b>Workshop</b><br>${esc(r.workshop||'—')}</div><div><b>Sent</b><br>${esc(r.sentDate||'—')}</div><div><b>Return</b><br>${esc(r.returnDate||'—')}</div></div><div class="card-actions"><button data-ract="edit" data-id="${r.id}">Edit</button><button data-ract="close" data-id="${r.id}">Mark Returned</button><button data-ract="delete" data-id="${r.id}">Delete</button></div></div></article>`}).join(''):'<div class="empty">No repair records yet.</div>'}
+function openModal(id){$('#'+id).classList.add('show');$('#'+id).setAttribute('aria-hidden','false')}
+function closeModal(id){$('#'+id).classList.remove('show');$('#'+id).setAttribute('aria-hidden','true')}
+function resetItemForm(){ $('#itemForm').reset();$('#itemId').value='';$('#qty').value=0;$('#minStock').value=0;$('#department').value='Marine';populateAreaSelect('Marine','');$('#lifeStatus').value='Available';currentPhoto='';$('#photoPreview').classList.add('hidden');$('#photoPreview').src='';$('#itemModalTitle').textContent='Add Item'}
+function editItem(id){const i=items.find(x=>x.id===id);if(!i)return;resetItemForm();$('#itemModalTitle').textContent='Edit Item';Object.entries({itemId:i.id,materialNo:i.materialNo,itemName:i.itemName,department:i.department,area:i.area||'',category:i.category,equipmentTag:i.equipmentTag,manufacturer:i.manufacturer,model:i.model,partNo:i.partNo,serialNo:i.serialNo,qty:i.qty,minStock:i.minStock,unit:i.unit,storeLocation:i.storeLocation,rackBin:i.rackBin,lifeStatus:i.lifeStatus,description:i.description,notes:i.notes}).forEach(([k,v])=>{const e=$('#'+k);if(e)e.value=v??''});populateAreaSelect(i.department,i.area||'');currentPhoto=i.photo||'';if(currentPhoto){$('#photoPreview').src=currentPhoto;$('#photoPreview').classList.remove('hidden')}openModal('itemModal')}
+function compressImage(file){return new Promise((res,rej)=>{const img=new Image(),r=new FileReader();r.onload=e=>img.src=e.target.result;r.onerror=rej;img.onload=()=>{let w=img.width,h=img.height,max=1100;if(w>max||h>max){const s=Math.min(max/w,max/h);w=Math.round(w*s);h=Math.round(h*s)}const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);res(c.toDataURL('image/jpeg',.72))};r.readAsDataURL(file)})}
+async function handlePhotoFile(f){if(!f)return;currentPhoto=await compressImage(f);$('#photoPreview').src=currentPhoto;$('#photoPreview').classList.remove('hidden')}
+$('#photoCamera').addEventListener('change',async e=>{await handlePhotoFile(e.target.files[0]);e.target.value=''});
+$('#photoGallery').addEventListener('change',async e=>{await handlePhotoFile(e.target.files[0]);e.target.value=''});
+$('#itemForm').addEventListener('submit',async e=>{e.preventDefault();const id=$('#itemId').value||uid();const old=items.find(i=>i.id===id);const obj={id,materialNo:$('#materialNo').value.trim(),itemName:$('#itemName').value.trim(),department:$('#department').value,area:$('#area').value,category:$('#category').value.trim(),equipmentTag:$('#equipmentTag').value.trim(),manufacturer:$('#manufacturer').value.trim(),model:$('#model').value.trim(),partNo:$('#partNo').value.trim(),serialNo:$('#serialNo').value.trim(),qty:Number($('#qty').value)||0,minStock:Number($('#minStock').value)||0,unit:$('#unit').value,storeLocation:$('#storeLocation').value.trim(),rackBin:$('#rackBin').value.trim(),lifeStatus:$('#lifeStatus').value,description:$('#description').value.trim(),notes:$('#notes').value.trim(),photo:currentPhoto,created:old?.created||new Date().toISOString(),updated:new Date().toISOString()};await put('items',obj);closeModal('itemModal');await load();toast(old?'Item updated':'Item added')});
+function openMovement(id){const i=items.find(x=>x.id===id);if(!i)return;$('#movementForm').reset();$('#moveItemId').value=id;$('#moveQty').value=1;$('#moveItemSummary').innerHTML=`<b>${esc(i.itemName)}</b><br><span class="muted">${esc(i.materialNo)} • Current stock: ${i.qty} ${esc(i.unit||'pcs')}</span>`;openModal('movementModal')}
+$('#movementForm').addEventListener('submit',async e=>{e.preventDefault();const i=items.find(x=>x.id===$('#moveItemId').value);if(!i)return;const type=$('#moveType').value,q=Number($('#moveQty').value)||0;if(q<=0)return;let newQty=Number(i.qty)||0;if(['Issue','Consume'].includes(type)){if(q>newQty&&!confirm('Quantity exceeds available stock. Continue anyway?'))return;newQty-=q}else if(['Receive','Return'].includes(type))newQty+=q;else if(type==='Adjust')newQty=q;i.qty=Math.max(0,newQty);i.updated=new Date().toISOString();await put('items',i);const t={id:uid(),itemId:i.id,itemName:i.itemName,type,qty:q,person:$('#movePerson').value.trim(),equipment:$('#moveEquipment').value.trim(),note:$('#moveNote').value.trim(),date:new Date().toISOString()};await put('transactions',t);closeModal('movementModal');await load();toast('Movement saved')});
+function populateRepairItems(){const s=$('#repairItem');const old=s.value;s.innerHTML=items.map(i=>`<option value="${i.id}">${esc(i.materialNo)} — ${esc(i.itemName)}</option>`).join('');if(items.some(i=>i.id===old))s.value=old}
+function openRepair(id){if(!items.length){toast('Add an item first');return}$('#repairForm').reset();$('#repairId').value='';populateRepairItems();if(id)$('#repairItem').value=id;$('#sentDate').value=new Date().toISOString().slice(0,10);openModal('repairModal')}
+function editRepair(id){const r=repairs.find(x=>x.id===id);if(!r)return;openRepair(r.itemId);$('#repairId').value=r.id;$('#repairStatus').value=r.status;$('#workshop').value=r.workshop||'';$('#sentDate').value=r.sentDate||'';$('#returnDate').value=r.returnDate||'';$('#repairCost').value=r.cost||'';$('#currency').value=r.currency||'BHD';$('#fault').value=r.fault||'';$('#repairWork').value=r.work||'';$('#repairNotes').value=r.notes||''}
+$('#repairForm').addEventListener('submit',async e=>{e.preventDefault();const id=$('#repairId').value||uid(),old=repairs.find(x=>x.id===id);const r={id,itemId:$('#repairItem').value,status:$('#repairStatus').value,workshop:$('#workshop').value.trim(),sentDate:$('#sentDate').value,returnDate:$('#returnDate').value,cost:Number($('#repairCost').value)||0,currency:$('#currency').value,fault:$('#fault').value.trim(),work:$('#repairWork').value.trim(),notes:$('#repairNotes').value.trim(),created:old?.created||new Date().toISOString(),updated:new Date().toISOString()};await put('repairs',r);const i=items.find(x=>x.id===r.itemId);if(i){i.lifeStatus=r.status.includes('Returned')?'Returned from Repair':r.status==='Scrapped'?'Scrapped':r.status==='Sent for Repair'?'Sent for Repair':'Under Repair';await put('items',i)}closeModal('repairModal');await load();toast('Repair record saved')});
+$('#inventoryList').addEventListener('click',async e=>{const b=e.target.closest('button[data-act]');if(!b)return;const {act,id}=b.dataset;if(act==='edit')editItem(id);if(act==='move')openMovement(id);if(act==='repair')openRepair(id);if(act==='delete'&&confirm('Delete this item?')){await del('items',id);await load();toast('Item deleted')}})
+$('#transactionList').addEventListener('click',async e=>{const b=e.target.closest('button[data-tact]');if(!b)return;if(b.dataset.tact==='delete'&&confirm('Delete this movement record? This will remove the history entry only and will not automatically change current stock.')){await del('transactions',b.dataset.id);await load();toast('Movement deleted')}})
+$('#repairList').addEventListener('click',async e=>{const b=e.target.closest('button[data-ract]');if(!b)return;const r=repairs.find(x=>x.id===b.dataset.id);if(!r)return;if(b.dataset.ract==='edit')editRepair(r.id);if(b.dataset.ract==='delete'&&confirm('Delete this repair record?')){await del('repairs',r.id);await load();toast('Repair deleted')}if(b.dataset.ract==='close'){r.status='Returned from Repair';r.returnDate=r.returnDate||new Date().toISOString().slice(0,10);r.updated=new Date().toISOString();await put('repairs',r);const i=items.find(x=>x.id===r.itemId);if(i){i.lifeStatus='Returned from Repair';await put('items',i)}await load();toast('Marked as returned')}})
+function switchView(v){$$('.view').forEach(x=>x.classList.toggle('active',x.id===v));$$('.tabs button').forEach(x=>x.classList.toggle('active',x.dataset.view===v));window.scrollTo({top:0,behavior:'smooth'})}
+$('#tabs').addEventListener('click',e=>{const b=e.target.closest('button[data-view]');if(b)switchView(b.dataset.view)});$$('[data-go]').forEach(b=>b.addEventListener('click',()=>switchView(b.dataset.go)));$$('.dept-card').forEach(b=>b.addEventListener('click',()=>openDepartment(b.dataset.dept)));
+function openInventoryByStatus(status){
+ $('#searchInput').value='';$('#deptFilter').value='';populateAreaFilter();$('#areaFilter').value='';$('#statusFilter').value=status;$('#categoryFilter').value='';switchView('inventory');renderInventory();
+}
+$$('[data-kpi-status]').forEach(card=>{
+ card.addEventListener('click',()=>openInventoryByStatus(card.dataset.kpiStatus));
+ card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openInventoryByStatus(card.dataset.kpiStatus)}});
+});
+['searchInput','deptFilter','areaFilter','statusFilter','categoryFilter'].forEach(id=>$('#'+id).addEventListener(id==='searchInput'?'input':'change',renderInventory));
+$('#deptFilter').addEventListener('change',()=>{populateAreaFilter();$('#areaFilter').value='';renderInventory()});
+$('#department').addEventListener('change',()=>populateAreaSelect($('#department').value,''));
+$('#foldersBack').addEventListener('click',()=>{if(currentPath){currentPath=parentPath(currentPath);renderFolders()}else switchView('dashboard')});
+$('#addFolderBtn').addEventListener('click',()=>{let name=(prompt(currentPath?'Subfolder name:':'Folder name:')||'').trim().replaceAll('/','-');if(!name)return;const full=currentPath?currentPath+'/'+name:name;if(folderNames(currentDept).some(n=>n.toLowerCase()===full.toLowerCase())){alert('A folder with this name already exists here.');return}(folders[currentDept]||(folders[currentDept]=[])).push(full);saveFolders();renderFolders();populateAreaSelect(currentDept,'');toast(currentPath?'Subfolder added':'Folder added')});
+$('#viewFolderItemsBtn').addEventListener('click',viewCurrentFolderItems);
+$('#addItemHereBtn').addEventListener('click',()=>{resetItemForm();$('#department').value=currentDept;populateAreaSelect(currentDept,currentPath);$('#area').value=currentPath;openModal('itemModal')});
+$('#folderList').addEventListener('click',e=>{const b=e.target.closest('button[data-folder-act]');if(!b)return;const name=b.dataset.name||'';if(b.dataset.folderAct==='open')openFolder(name);if(b.dataset.folderAct==='rename')renameFolder(name);if(b.dataset.folderAct==='delete')deleteFolder(name)});
+$('#addItemBtn').addEventListener('click',()=>{resetItemForm();openModal('itemModal')});$('#quickAdd').addEventListener('click',()=>{resetItemForm();openModal('itemModal')});$('#addRepairBtn').addEventListener('click',()=>openRepair());$$('[data-close]').forEach(b=>b.addEventListener('click',()=>closeModal(b.dataset.close)));$$('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)closeModal(m.id)}));
+$$('.manage-dept').forEach(b=>b.addEventListener('click',()=>openDepartment(b.dataset.dept)));$('#manageAddItem').addEventListener('click',()=>{resetItemForm();openModal('itemModal')});$('#manageInventory').addEventListener('click',()=>switchView('inventory'));$('#manageAddRepair').addEventListener('click',()=>openRepair());$('#manageRepairs').addEventListener('click',()=>switchView('repairs'));$('#manageMovements').addEventListener('click',()=>switchView('transactions'));$('#manageResetData').addEventListener('click',()=>$('#resetData').click());
+function download(name,text,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)}
+$('#exportJson').addEventListener('click',()=>download('electrical_store_backup_'+new Date().toISOString().slice(0,10)+'.json',JSON.stringify({version:2,exported:new Date().toISOString(),folders,items,transactions,repairs},null,2),'application/json'));
+$('#exportCsv').addEventListener('click',()=>{const cols=['Material Number','Item Name','Department','Equipment Folder','Category','Equipment Tag','Manufacturer','Model','Part Number','Serial Number','Quantity','Minimum Stock','Unit','Store Location','Rack/Bin','Lifecycle Status','Stock Status','Description','Notes'];const val=v=>'"'+String(v??'').replace(/"/g,'""')+'"';const rows=items.map(i=>[i.materialNo,i.itemName,i.department,i.area||'',i.category,i.equipmentTag,i.manufacturer,i.model,i.partNo,i.serialNo,i.qty,i.minStock,i.unit,i.storeLocation,i.rackBin,i.lifeStatus,stockState(i),i.description,i.notes].map(val).join(','));download('electrical_inventory_'+new Date().toISOString().slice(0,10)+'.csv','\ufeff'+cols.map(val).join(',')+'\n'+rows.join('\n'),'text/csv;charset=utf-8')});
+$('#importJson').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const data=JSON.parse(await f.text());if(!confirm('Import backup and replace current local data?'))return;if(data.folders){folders={Marine:[...(data.folders.Marine||[])],Calciner:[...(data.folders.Calciner||[])],Desalination:[...(data.folders.Desalination||[])]};saveFolders()}await Promise.all(['items','transactions','repairs'].map(clearStore));for(const x of data.items||[])await put('items',x);for(const x of data.transactions||[])await put('transactions',x);for(const x of data.repairs||[])await put('repairs',x);await load();toast('Backup imported')}catch(err){alert('Invalid backup file')}});
+$('#resetData').addEventListener('click',async()=>{if(confirm('This will delete ALL items, movements and repairs stored on this device. Continue?')){await Promise.all(['items','transactions','repairs'].map(clearStore));folders=JSON.parse(JSON.stringify(DEFAULT_FOLDERS));saveFolders();await load();toast('All data cleared')}});
+openDB().then(load).catch(err=>{console.error(err);alert('Could not open local database in this browser.')});
+</script>
+</body>
+</html>
